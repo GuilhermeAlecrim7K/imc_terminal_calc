@@ -1,14 +1,12 @@
 name: imc_terminal_calc
-description: A sample command-line application.
+description: A command-line IMC calculator.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/GuilhermeAlecrim7K/imc_terminal_calc
 
 environment:
   sdk: ^3.1.0
 
-# Add regular dependencies here.
 dependencies:
-  # path: ^1.8.0
 
 dev_dependencies:
   lint: ^2.1.2

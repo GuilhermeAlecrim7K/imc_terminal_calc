@@ -5,12 +5,9 @@ enum ImcClassification {
   underWeight('Underweight'),
   normal('Normal'),
   overweight('Overweight'),
-  obeseClass1('Obese Class 1'),
-  obeseClass2('Obese Class 2'),
-  severelyObese('Severely Obese'),
-  morbidlyObese('Morbidly Obese'),
-  superObese('Super Obese'),
-  hyperObese('Hyper Obese');
+  obese('Obesity Class 1'),
+  severelyObese('Obesity Class 2- Severe'),
+  morbidlyObese('Obesity Class 3 - Morbid');
 
   const ImcClassification(this.description);
 
@@ -20,7 +17,7 @@ enum ImcClassification {
 abstract final class ImcUtils {
   static ImcClassification getClassification(double imc) {
     switch (imc) {
-      case < 16.5:
+      case < 17:
         return ImcClassification.severelyUnderweight;
       case < 18.5:
         return ImcClassification.underWeight;
@@ -29,17 +26,11 @@ abstract final class ImcUtils {
       case < 30:
         return ImcClassification.overweight;
       case < 35:
-        return ImcClassification.obeseClass1;
+        return ImcClassification.obese;
       case < 40:
-        return ImcClassification.obeseClass2;
-      case < 45:
         return ImcClassification.severelyObese;
-      case < 50:
-        return ImcClassification.morbidlyObese;
-      case < 60:
-        return ImcClassification.superObese;
       default:
-        return ImcClassification.hyperObese;
+        return ImcClassification.morbidlyObese;
     }
   }
 }

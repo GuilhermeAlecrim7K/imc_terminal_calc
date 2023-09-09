@@ -6,7 +6,7 @@ void main() {
     test('Severely Underweight', () {
       expect(
         ImcClassification.severelyUnderweight,
-        ImcUtils.getClassification(16.49999),
+        ImcUtils.getClassification(16.99999),
       );
       expect(
         ImcClassification.severelyUnderweight,
@@ -16,11 +16,11 @@ void main() {
     test('Underweight', () {
       expect(
         ImcClassification.underWeight,
-        ImcUtils.getClassification(16.5),
+        ImcUtils.getClassification(17),
       );
       expect(
         ImcClassification.underWeight,
-        ImcUtils.getClassification(17),
+        ImcUtils.getClassification(18),
       );
       expect(
         ImcClassification.underWeight,
@@ -57,86 +57,44 @@ void main() {
     });
     test('Obese Class 1', () {
       expect(
-        ImcClassification.obeseClass1,
+        ImcClassification.obese,
         ImcUtils.getClassification(30),
       );
       expect(
-        ImcClassification.obeseClass1,
+        ImcClassification.obese,
         ImcUtils.getClassification(32),
       );
       expect(
-        ImcClassification.obeseClass1,
+        ImcClassification.obese,
         ImcUtils.getClassification(34.9999),
       );
     });
     test('Obese Class 2', () {
       expect(
-        ImcClassification.obeseClass2,
+        ImcClassification.severelyObese,
         ImcUtils.getClassification(35),
       );
       expect(
-        ImcClassification.obeseClass2,
+        ImcClassification.severelyObese,
         ImcUtils.getClassification(38),
       );
       expect(
-        ImcClassification.obeseClass2,
+        ImcClassification.severelyObese,
         ImcUtils.getClassification(39.99999),
-      );
-    });
-    test('Severely Obese', () {
-      expect(
-        ImcClassification.severelyObese,
-        ImcUtils.getClassification(40),
-      );
-      expect(
-        ImcClassification.severelyObese,
-        ImcUtils.getClassification(42),
-      );
-      expect(
-        ImcClassification.severelyObese,
-        ImcUtils.getClassification(44.99999),
       );
     });
     test('Morbidly Obese', () {
       expect(
         ImcClassification.morbidlyObese,
-        ImcUtils.getClassification(45),
+        ImcUtils.getClassification(40),
       );
       expect(
         ImcClassification.morbidlyObese,
-        ImcUtils.getClassification(47),
+        ImcUtils.getClassification(42),
       );
       expect(
         ImcClassification.morbidlyObese,
-        ImcUtils.getClassification(49.99999),
-      );
-    });
-    test('Super Obese', () {
-      expect(
-        ImcClassification.superObese,
-        ImcUtils.getClassification(50),
-      );
-      expect(
-        ImcClassification.superObese,
-        ImcUtils.getClassification(55),
-      );
-      expect(
-        ImcClassification.superObese,
-        ImcUtils.getClassification(59.99999),
-      );
-    });
-    test('Hyper Obese', () {
-      expect(
-        ImcClassification.hyperObese,
-        ImcUtils.getClassification(60),
-      );
-      expect(
-        ImcClassification.hyperObese,
-        ImcUtils.getClassification(70),
-      );
-      expect(
-        ImcClassification.hyperObese,
-        ImcUtils.getClassification(80),
+        ImcUtils.getClassification(44.99999),
       );
     });
   });

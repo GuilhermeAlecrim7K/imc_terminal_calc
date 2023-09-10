@@ -1,5 +1,9 @@
 import 'dart:io';
 
+import 'package:imc_terminal_calc/src/exceptions/exceptions.dart';
+import 'package:imc_terminal_calc/src/person_imc_model.dart';
+import 'package:imc_terminal_calc/src/utils/imc_utils.dart';
+
 void run() {
   while (true) {
     stdout.writeln('=======================================');
@@ -26,7 +30,24 @@ void run() {
       weightInKilograms = double.tryParse(stdin.readLineSync() ?? '');
     }
 
-    //TODO: calculate IMC
+    stdout.writeln();
+    try {
+      final person = PersonIMCModel(
+        name: name,
+        heightInMeters: heightInMeters,
+        weightInKilograms: weightInKilograms,
+      );
+      stdout.writeln(person);
+    } on InvalidArgumentException catch (e) {
+      stdout.writeln('Invalid argument: $e');
+      stdout.writeln('Accepted values for height: '
+          '${ImcUtils.heightOfShortestHumanInHistory}m~'
+          '${ImcUtils.heightOfTallestHumanInHistory}m');
+      stdout.writeln('Accepted values for weight: '
+          '${ImcUtils.weightOfSkinniestHuman}kg~'
+          '${ImcUtils.weightOfHeaviestHumanInHistory}kg');
+    }
+    stdout.writeln();
 
     stdout.write('Would you like to try again? (Y/N):');
     final tryAgainResponse = stdin.readLineSync();

@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_classes_with_only_static_members
 
+import 'package:imc_terminal_calc/src/exceptions/exceptions.dart';
+
 enum ImcClassification {
   severelyUnderweight('Severely Underweight'),
   underWeight('Underweight'),
@@ -32,5 +34,29 @@ abstract final class ImcUtils {
       default:
         return ImcClassification.morbidlyObese;
     }
+  }
+
+  // https://en.wikipedia.org/wiki/List_of_the_verified_shortest_people
+  static const heightOfShortestHumanInHistory = 0.5464;
+  // https://en.wikipedia.org/wiki/Robert_Wadlow
+  static const heightOfTallestHumanInHistory = 2.72;
+  // https://en.wikipedia.org/wiki/Lizzie_Vel%C3%A1squez
+  static const weightOfSkinniestHuman = 29.0;
+  // https://en.wikipedia.org/wiki/Jon_Brower_Minnoch
+  static const weightOfHeaviestHumanInHistory = 635.0;
+
+  static double calculateImc({
+    required double heightInMeters,
+    required double weightInKilograms,
+  }) {
+    if (heightInMeters < heightOfShortestHumanInHistory ||
+        heightInMeters > heightOfTallestHumanInHistory) {
+      throw InvalidArgumentException('height', '${heightInMeters}m');
+    }
+    if (weightInKilograms < weightOfSkinniestHuman ||
+        weightInKilograms > weightOfHeaviestHumanInHistory) {
+      throw InvalidArgumentException('weight', '${weightInKilograms}kg');
+    }
+    return weightInKilograms / (heightInMeters * heightInMeters);
   }
 }
